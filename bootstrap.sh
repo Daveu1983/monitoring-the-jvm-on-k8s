@@ -19,9 +19,19 @@ docker pull gradle:jdk11
 docker pull adoptopenjdk/openjdk11
 
 echo
+echo "Update helm repo"
+echo
+helm repo update
+
+echo
+echo "create monitoring namespace"
+echo
+kubectl create namespace monitoring
+
+echo
 echo "Deploying the prometheus operator Helm chart..."
 echo
-helm install --name prometheus --namespace monitoring stable/prometheus-operator --wait
+helm install prometheus --namespace monitoring stable/prometheus-operator --wait
 
 echo
 echo "Hit any key to deploy the Chaos Kraken..."
