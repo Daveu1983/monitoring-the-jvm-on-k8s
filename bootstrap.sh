@@ -19,11 +19,6 @@ docker pull gradle:jdk11
 docker pull adoptopenjdk/openjdk11
 
 echo
-echo "Initialising Helm..."
-echo
-helm init --wait
-
-echo
 echo "Deploying the prometheus operator Helm chart..."
 echo
 helm install --name prometheus --namespace monitoring stable/prometheus-operator --wait
