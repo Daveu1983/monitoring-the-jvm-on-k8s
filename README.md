@@ -50,7 +50,7 @@ kubectl -n monitoring get secret prometheus-prometheus-prometheus-oper-prometheu
 The username & password for Grafana are stored in a secret:
 
 ```bash
-kubectk get secret -n monitoring prometheus-grafana -ojson | jq -r '.data["admin-user"]' | base64 -d
+kubectl get secret -n monitoring prometheus-grafana -ojson | jq -r '.data["admin-user"]' | base64 -d
 kubectl get secret -n monitoring prometheus-grafana -ojson | jq -r '.data["admin-password"]' | base64 -d
 ```
 
@@ -58,5 +58,13 @@ The defaults are `admin/prom-operator` and as we are running this locally via Mi
 
 # Monitoring the JVM on Kubernetes - GKE and Helm v3
 
+##Tools
+- [glcoud] https://cloud.google.com/sdk/
+- [helm 3](https://github.com/helm/helm#install)
+
 ##Setup
+
+_NOTE: these instructions have been tested on Ubuntu 20.04.1 and some of the changes from the main branch will be to deal with the change from Mac to Linux, rather than minikube to GCP
+
 Prior to running the bootstrap script you will need to export two variables PROJECT_ID which is the name of the project on GCP you would like to provision the cluster on and ZONE which is the region and zone you would like to provisioin the cluster on in GCP.
+
