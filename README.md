@@ -55,3 +55,8 @@ kubectl get secret -n monitoring prometheus-grafana -ojson | jq -r '.data["admin
 ```
 
 The defaults are `admin/prom-operator` and as we are running this locally via Minikube we won't worry about making it more secure.
+
+# Monitoring the JVM on Kubernetes - GKE and Helm v3
+
+##Setup
+Prior to running the bootstrap script you will need to export two variables PROJECT_ID which is the name of the project on GCP you would like to provision the cluster on and ZONE which is the region and zone you would like to provisioin the cluster on in GCP.
