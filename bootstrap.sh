@@ -5,20 +5,16 @@ set -o pipefail
 set -o nounset
 
 echo
-echo "Deleting existing minikube cluster, if it exists..."
+echo "Creating gcp Kubernetes cluster on GKE (Google Kubernetes Engine)..."
 echo
-minikube delete
+gcloud config set compute/zone $ZONE
+gcloud config set project $PROJECT_ID
+gcloud container clusters create monitor-jvm --num-nodes=3 
 
-echo
-echo "Creating minikube Kubernetes cluster..."
-echo
-minikube start --kubernetes-version=1.15.9 --cpus=8 --memory=4000mb
-kubectx minikube
 
 echo
 echo "Pre-cache some of the Docker images we'll need..."
 echo
-eval $(minikube docker-env)
 docker pull gradle:jdk11
 docker pull adoptopenjdk/openjdk11
 

@@ -7,4 +7,4 @@ set -o nounset
 echo
 echo "Deleting minikube cluster..."
 echo
-minikube delete
+gcloud container clusters delete monitor-jvm
