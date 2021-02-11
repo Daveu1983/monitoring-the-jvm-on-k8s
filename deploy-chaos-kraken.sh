@@ -5,14 +5,12 @@ set -o pipefail
 set -o nounset
 
 echo
-echo "Building chaos-kraken Docker image in minikube..."
+echo "Building chaos-kraken Docker image in GKE.."
 echo
-
-eval $(minikube docker-env)
 
 docker-compose build
 
 echo 
 echo "Deploy chaos-kraken Helm chart..."
 echo
-helm install chaos-kraken/helm --name chaos-kraken
+helm install chaos-kraken chaos-kraken/helm
